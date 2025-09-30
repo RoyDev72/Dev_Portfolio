@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Personal Portfolio Website",
+    "description": "A responsive portfolio to showcase my work and skills.",
+    "image": "/images/portfolio.png",
+    "url": "https://yourportfolio.com"
+  },
+  {
+    "id": 2,
+    "title": "E-commerce Store",
+    "description": "A modern e-commerce platform with full shopping cart functionality.",
+    "image": "/images/store.png",
+    "url": "https://mystore.com"
+  }
+]

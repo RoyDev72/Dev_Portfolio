@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html, body, #root { block-size: 100%; }
+body {
+  @apply bg-base text-gray-300 font-sans antialiased;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+/* Scrollbar minimalist */
+*::-webkit-scrollbar { inline-size: 8px; block-size: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: #2a2a2a; }
+
+@layer components {
+  .card { @apply bg-elev rounded-3xl border border-subtle shadow-card; }
+  .card-flat { @apply bg-elev2 border border-subtle rounded-2xl; }
+  .soft-border { border-color: #1a1a1a !important; }
+  .body-copy { @apply text-gray-300 leading-[1.6]; font-size:15.5px; }
+  @screen md { .body-copy { font-size:16px; } }
+  .icon-pill { @apply inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[#232323] text-accent text-base; }
+  .info-row { @apply flex items-start gap-3 text-sm; }
+  .info-label { @apply flex items-center justify-center w-8 h-8 rounded-xl bg-[#1d1d1d] text-accent; }
+  .nav-ghost { @apply text-gray-400 hover:text-accent transition-colors; }
+  .custom-scroll::-webkit-scrollbar { inline-size:6px; }
+  .custom-scroll::-webkit-scrollbar-track { background:transparent; }
+  .custom-scroll::-webkit-scrollbar-thumb { background:#1e1e1e; border-radius:6px; }
+  .custom-scroll:hover::-webkit-scrollbar-thumb { background:#252525; }
+  /* Sidebar sizing enhancements */
+  .sidebar-name { @apply text-3xl font-semibold tracking-tight text-white; }
+  .sidebar-role { @apply px-4 py-1.5 rounded-xl bg-[#222222] text-[13px] font-medium text-gray-200; }
+  .social-btn { @apply w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 bg-[#1b1b1b] hover:text-[#ffdb70] hover:bg-[#242424] transition-colors text-lg; }
+  .contact-item { @apply flex gap-4 items-center rounded-2xl bg-[#141414] border border-[#1d1d1d] px-4 py-4; }
+  .contact-icon { @apply flex items-center justify-center w-11 h-11 rounded-xl bg-[#1d1d1d] text-[#ffdb70] text-xl; }
+  .contact-meta { @apply flex flex-col leading-tight text-sm; }
+  .contact-label { @apply text-[11px] uppercase tracking-wide text-gray-500 font-medium; }
+  /* Tabs design */
+  .tabs-bar { @apply flex items-center gap-1; }
+  .tab-link { @apply relative px-6 py-4 rounded-xl text-[13px] font-medium text-gray-400 transition-colors duration-200 select-none; }
+  .tab-link:hover { @apply text-gray-200 bg-[#1b1b1b]; }
+  .tab-link-active { @apply text-white bg-[#202020]; }
+  .tab-link-active::after { content:""; position:absolute; inset-inline-start:18px; inset-inline-end:18px; inset-block-end:6px; block-size:3px; background:#ffdb70; border-radius:2px; }
+}
+
+h1,h2,h3,h4 { @apply text-white font-semibold tracking-tight; }
+
+.accent-underline { position: relative; }
+.accent-underline:after { content: ""; position: absolute; inset-inline-start:0; inset-block-end:-6px; inline-size:38px; block-size:3px; background:#ffdb70; border-radius:3px; }
