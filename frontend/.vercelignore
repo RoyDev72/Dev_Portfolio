@@ -1,0 +1,21 @@
+# Ignore local/dev artifacts
+node_modules
+npm-debug.log
+yarn-error.log
+.DS_Store
+
+# Git data (not needed in build output)
+.git
+.gitignore
+
+# Backend folder (deploying frontend only here)
+../backend
+backend
+
+# IDE/editor
+.vscode
+*.swp
+
+# Tests (optional to exclude)
+src/**/*.test.js
+src/**/__tests__/**
