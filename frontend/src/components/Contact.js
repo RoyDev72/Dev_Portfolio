@@ -13,8 +13,11 @@ export default function Contact() {
   const [status, setStatus] = useState(null); // { type: 'ok'|'err', text }
   const [sending, setSending] = useState(false);
 
-  // Prefer environment variable; fall back to localhost in dev; use relative path in prod so reverse proxy / same origin works
-  const API_BASE = process.env.REACT_APP_API_BASE || (process.env.NODE_ENV === 'development' ? 'https://dev-portfolio-485y.onrender.com' : '');
+  // Option 1: Directly call deployed backend service.
+  // Use env var if provided; fallback to localhost in dev; hardcode Render URL in production build.
+  const API_BASE = process.env.REACT_APP_API_BASE || (process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000'
+    : 'https://dev-portfolio-485y.onrender.com');
 
   const abortRef = useRef(null);
 
@@ -35,7 +38,8 @@ export default function Contact() {
 
       let resp;
       try {
-        resp = await fetch(`${API_BASE}/api/contact`, {
+        // Use top-level API_BASE and /contact (no /api prefix per Option 1)
+        resp = await fetch(`${API_BASE}/contact`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, message }),
