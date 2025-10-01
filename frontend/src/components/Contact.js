@@ -14,7 +14,7 @@ export default function Contact() {
   const [sending, setSending] = useState(false);
 
   // Prefer environment variable; fall back to localhost in dev; use relative path in prod so reverse proxy / same origin works
-  const API_BASE = process.env.REACT_APP_API_BASE || (process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '');
+  const API_BASE = process.env.REACT_APP_API_BASE || (process.env.NODE_ENV === 'development' ? 'https://dev-portfolio-485y.onrender.com' : '');
 
   const abortRef = useRef(null);
 
