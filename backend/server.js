@@ -18,8 +18,11 @@ app.use(cors({
     if (!origin) return callback(null, true); // non-browser / curl
     if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) return callback(null, true);
     return callback(new Error("CORS: Origin not allowed"));
-  }
+  },
+  methods: ["GET","POST","OPTIONS"],
+  allowedHeaders: ["Content-Type"],
 }));
+app.options("*", cors());
 app.use(express.json());
 
 app.get("/api/projects", (req, res) => {
@@ -68,7 +71,7 @@ function rateLimit(req, res) {
   return false;
 }
 
-app.post("/api/contact", async (req, res) => {
+async function handleContact(req, res) {
   if (rateLimit(req, res)) {
     return res.status(429).json({ success: false, message: "Too many messages, please try later." });
   }
@@ -108,7 +111,15 @@ app.post("/api/contact", async (req, res) => {
     console.error("[contact] send error:", err);
     res.status(500).json({ success: false, message: "Failed to send message." });
   }
-});
+}
+
+// Existing route (frontend older versions using /api/contact)
+app.post("/api/contact", handleContact);
+// New simpler route without /api prefix
+app.post("/contact", handleContact);
+
+// Health check
+app.get("/health", (req, res) => res.json({ status: "ok" }));
 
 app.listen(PORT, () => {
   console.log(`Backend server running on http://localhost:${PORT}`);
