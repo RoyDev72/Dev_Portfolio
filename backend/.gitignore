@@ -2,9 +2,12 @@
 node_modules/
 .DS_Store
 npm-debug.log
+backend/.env
+frontend/.env       
 # Logs
 logs
 *.log
 pids
 *.pid
 *.seed
+
