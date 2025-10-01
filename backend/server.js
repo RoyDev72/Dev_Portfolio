@@ -22,7 +22,14 @@ app.use(cors({
   methods: ["GET","POST","OPTIONS"],
   allowedHeaders: ["Content-Type"],
 }));
-app.options("*", cors());
+// Express 5 stricter path matching: explicit generic OPTIONS handler
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    // CORS headers will already be set by cors() above
+    return res.sendStatus(204);
+  }
+  next();
+});
 app.use(express.json());
 
 app.get("/api/projects", (req, res) => {
