@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 const escapeHtml = (s = '') => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 export async function sendContactEmail({ name, email, message }) {
