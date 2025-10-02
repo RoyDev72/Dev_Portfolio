@@ -54,17 +54,30 @@ try {
       pool: true,
       maxConnections: parseInt(process.env.SMTP_POOL_MAX || '3', 10),
       maxMessages: parseInt(process.env.SMTP_POOL_MSG || '50', 10),
-      keepAlive: true
+      keepAlive: true,
+      connectionTimeout: parseInt(process.env.SMTP_CONN_TIMEOUT || '8000', 10),
+      greetingTimeout: parseInt(process.env.SMTP_GREETING_TIMEOUT || '8000', 10),
+      socketTimeout: parseInt(process.env.SMTP_SOCKET_TIMEOUT || '15000', 10)
     });
-    // Verify connection once at startup
-    transporter.verify().then(() => {
-      console.log("[contact] SMTP connection verified.");
-    }).catch(err => {
-      mailEnabled = false;
-      mailDiag.reason = "verify_failed";
-      mailDiag.error = err.message;
-      console.error("[contact] SMTP verify failed, disabling email:", err.message);
-    });
+    const skipVerify = process.env.SKIP_SMTP_VERIFY === 'true';
+    if (skipVerify) {
+      console.warn('[contact] SKIP_SMTP_VERIFY=true; skipping transporter.verify().');
+    } else {
+      transporter.verify().then(() => {
+        console.log("[contact] SMTP connection verified.");
+      }).catch(err => {
+        const allowOnFail = process.env.ALLOW_SEND_ON_VERIFY_FAIL === 'true';
+        mailDiag.reason = err && /timed?out/i.test(err.message) ? 'verify_failed_timeout' : 'verify_failed';
+        mailDiag.error = err.message;
+        if (allowOnFail) {
+          mailEnabled = true; // keep enabled, attempt first send later.
+          console.warn(`[contact] SMTP verify failed (${mailDiag.reason}) but ALLOW_SEND_ON_VERIFY_FAIL=true so continuing. Error: ${err.message}`);
+        } else {
+          mailEnabled = false;
+          console.error("[contact] SMTP verify failed, disabling email:", err.message, 'Set ALLOW_SEND_ON_VERIFY_FAIL=true to ignore or SKIP_SMTP_VERIFY=true to skip verification.');
+        }
+      });
+    }
   }
 } catch (e) {
   mailEnabled = false;
