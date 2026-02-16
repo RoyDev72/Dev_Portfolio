@@ -38,7 +38,7 @@ import {
   SiTerraform,
   SiKubernetes,
   SiGithub,
-  SiSpring
+  SiSpring,
 } from "react-icons/si";
 import { FaJava, FaDatabase } from "react-icons/fa";
 
@@ -79,7 +79,7 @@ const skillMeta = {
   Terraform: { icon: SiTerraform, color: "#623CE4" },
   Kubernetes: { icon: SiKubernetes, color: "#326CE5" },
   Vite: { icon: SiVite, color: "#646CFF" },
-  Postman: { icon: SiPostman, color: "#FF6C37" }
+  Postman: { icon: SiPostman, color: "#FF6C37" },
 };
 
 const SkillIcon = ({ name }) => {
@@ -89,7 +89,9 @@ const SkillIcon = ({ name }) => {
       <div
         className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-xl bg-[#1f1f1f] border border-[#2a2a2a] hover:border-[#ffdb70] transition-colors text-[10px] md:text-xs text-gray-300 text-center px-1"
         title={name}
-      >{name}</div>
+      >
+        {name}
+      </div>
     );
   }
   const { icon: Icon, color } = meta;
@@ -112,15 +114,22 @@ export default function Skills() {
         <div className="w-full flex flex-col md:flex-row gap-10 justify-center">
           {/* Main Card */}
           <div className="flex-1 rounded-3xl shadow-xl flex flex-col bg-[#181818] border soft-border">
-            <div className="hidden md:block"><Tabs /></div>
+            <div className="hidden md:block">
+              <Tabs />
+            </div>
             <div className="p-8 flex flex-col gap-6 text-[15px] leading-relaxed">
               <PageTitle title="Skills" />
               {profile.resume && (
                 <div className="mt-0 space-y-5">
-                  <p className="text-white-500 text-sm max-w-xl">It focuses on Frontend & Backend Engineering, DevOps practices, and consistent DSA problem solving.</p>
+                  <p className="text-white-500 text-sm max-w-xl">
+                    It focuses on Frontend & Backend Engineering, DevOps
+                    practices, and consistent DSA problem solving.
+                  </p>
                   <a
                     href={profile.resume}
-                    download
+                    download="Shivam_Roy_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-[#ffdb70] text-[#111] font-semibold text-sm shadow hover:brightness-95 active:scale-[.97] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdb70]/60"
                   >
                     <span>Download My Resume</span>
@@ -129,25 +138,40 @@ export default function Skills() {
               )}
               {/* Education */}
               <div>
-                <h3 className="text-lg font-semibold text-white mt-4 mb-3">Education</h3>
+                <h3 className="text-lg font-semibold text-white mt-4 mb-3">
+                  Education
+                </h3>
                 <div className="flex flex-col gap-4">
                   {profile.education.map((ed, i) => (
                     <div key={i} className="text-gray-400 ml-2">
-                      <span className="font-bold text-[#ffdb70]">{ed.institution}</span> <span className="text-white font-semibold">| {ed.period}</span><br />
-                      {ed.program}{ed.notes &&  <span className="text-gray-500"> — {ed.notes} </span>}
+                      <span className="font-bold text-[#ffdb70]">
+                        {ed.institution}
+                      </span>{" "}
+                      <span className="text-white font-semibold">
+                        | {ed.period}
+                      </span>
+                      <br />
+                      {ed.program}
+                      {ed.notes && (
+                        <span className="text-gray-500"> — {ed.notes} </span>
+                      )}
                     </div>
                   ))}
                 </div>
               </div>
               {/* Skills */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4 mt-4">My Skills</h3>
+                <h3 className="text-lg font-semibold text-white mb-4 mt-4">
+                  My Skills
+                </h3>
                 <div className="bg-[#161616] rounded-2xl p-6 flex flex-col gap-6 border border-[#2a2a2a] text-sm">
                   {Object.entries(profile.skills).map(([category, list]) => (
                     <div key={category} className="flex flex-col gap-2">
-                      <span className="text-white font-semibold">{category}</span>
+                      <span className="text-white font-semibold">
+                        {category}
+                      </span>
                       <div className="flex flex-wrap gap-4">
-                        {list.map(skill => (
+                        {list.map((skill) => (
                           <SkillIcon key={skill} name={skill} />
                         ))}
                       </div>
@@ -157,7 +181,9 @@ export default function Skills() {
               </div>
             </div>
           </div>
-          <div className="hidden md:block"><Sidebar /></div>
+          <div className="hidden md:block">
+            <Sidebar />
+          </div>
         </div>
       </div>
       <BottomTabs />
