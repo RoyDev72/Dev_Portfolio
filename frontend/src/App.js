@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 const Home = React.lazy(() => import("./components/Home"));
 const Contact = React.lazy(() => import("./components/Contact"));
-const Blog = React.lazy(() => import("./components/Blog"));
 const Projects = React.lazy(() => import("./components/Projects"));
 const Experience = React.lazy(() => import("./components/Experience"));
 // Reuse existing Skills component for the former Resume route

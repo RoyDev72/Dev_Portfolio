@@ -28,7 +28,7 @@ import {
   SiTerraform,
   SiMysql,
 } from "react-icons/si";
-import { FaDatabase, FaCode, FaRobot, FaServer, FaCogs, FaProjectDiagram } from "react-icons/fa";
+import { FaCode, FaRobot, FaServer, FaCogs, FaProjectDiagram } from "react-icons/fa";
 
 // Map skill names to icon components & brand colors.
 const skillMeta = {

@@ -7,7 +7,6 @@ import BottomTabs from "./BottomTabs";
 import {
   SiShopify,
   SiReact,
-  SiPython,
 } from "react-icons/si";
 import { FaCogs, FaBrain } from "react-icons/fa";
 import profile from "../data/profile";
