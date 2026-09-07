@@ -4,6 +4,7 @@ const Home = React.lazy(() => import("./components/Home"));
 const Contact = React.lazy(() => import("./components/Contact"));
 const Blog = React.lazy(() => import("./components/Blog"));
 const Projects = React.lazy(() => import("./components/Projects"));
+const Experience = React.lazy(() => import("./components/Experience"));
 // Reuse existing Skills component for the former Resume route
 const Resume = React.lazy(() => import("./components/Skills"));
 
@@ -49,9 +50,10 @@ function InnerApp() {
             <Route path="/" element={<RouteFade><Home /></RouteFade>} />
             <Route path="/skills" element={<RouteFade><Resume /></RouteFade>} />
             <Route path="/projects" element={<RouteFade><Projects /></RouteFade>} />
+            <Route path="/experience" element={<RouteFade><Experience /></RouteFade>} />
             {/* Legacy redirect */}
             <Route path="/portfolio" element={<Navigate to="/projects" replace />} />
-            <Route path="/blog" element={<RouteFade><Blog /></RouteFade>} />
+            <Route path="/blog" element={<Navigate to="/experience" replace />} />
             <Route path="/contact" element={<RouteFade><Contact /></RouteFade>} />
           </Routes>
         </React.Suspense>

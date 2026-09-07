@@ -6,10 +6,10 @@ import Sidebar from "./sidebar";
 export default function Navbar() {
   const links = [
     { label: "About", to: "/", id: 'about' },
-    { label: "Skills", to: "/", id: 'skills' },
-    { label: "Projects", to: "/", id: 'projects' },
-    { label: "Blog", to: "/", id: 'blog' },
-    { label: "Contact", to: "/", id: 'contact' },
+    { label: "Skills", to: "/skills", id: 'skills' },
+    { label: "Projects", to: "/projects", id: 'projects' },
+    { label: "Experience", to: "/experience", id: 'experience' },
+    { label: "Contact", to: "/contact", id: 'contact' },
   ];
 
   const containerRef = useRef(null);
@@ -56,7 +56,7 @@ export default function Navbar() {
     }>
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <a href="/" className="text-white font-bold text-lg tracking-wide">
-          Shivang<span className="text-[#ffdb70]">.dev</span>
+          Shivam<span className="text-[#ffdb70]">.dev</span>
         </a>
         <div
           ref={containerRef}

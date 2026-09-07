@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { FaUser, FaIdCard, FaFolderOpen, FaBlog, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaIdCard, FaFolderOpen, FaBriefcase, FaEnvelope } from "react-icons/fa";
 
 const items = [
   { label: "About", to: "/", icon: <FaUser /> },
   { label: "Skills", to: "/skills", icon: <FaIdCard /> },
   { label: "Projects", to: "/projects", icon: <FaFolderOpen /> },
-  { label: "Blog", to: "/blog", icon: <FaBlog /> },
+  { label: "Experience", to: "/experience", icon: <FaBriefcase /> },
   { label: "Contact", to: "/contact", icon: <FaEnvelope /> }
 ];
 

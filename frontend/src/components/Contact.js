@@ -88,8 +88,8 @@ export default function Contact() {
           <PageTitle title="Contact" />
           {/* Map */}
           <iframe
-            title="Nashik"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.375229043035!2d73.77135607542841!3d19.99745328143842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb31f4f8b7a1%3A0xead8685905a9d3f7!2sNashik%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1692204886793!5m2!1sen!2sin"
+            title="Mumbai"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823577!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1692204886793!5m2!1sen!2sin"
             width="100%"
             height="260"
             className="rounded-xl border-none mb-8"

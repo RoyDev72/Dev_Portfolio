@@ -11,43 +11,155 @@ body {
   font-feature-settings: 'liga' 1, 'calt' 1;
 }
 
-/* Scrollbar minimalist */
-*::-webkit-scrollbar { inline-size: 8px; block-size: 8px; }
+/* ── Scrollbar ─────────────────────────────────────────────────────────── */
+*::-webkit-scrollbar { inline-size: 6px; block-size: 6px; }
 *::-webkit-scrollbar-track { background: transparent; }
-*::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 8px; }
+*::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 6px; }
 *::-webkit-scrollbar-thumb:hover { background: #2a2a2a; }
 
 @layer components {
+
+  /* ── Card primitives ─────────────────────────────────────────────────── */
   .card { @apply bg-elev rounded-3xl border border-subtle shadow-card; }
   .card-flat { @apply bg-elev2 border border-subtle rounded-2xl; }
   .soft-border { border-color: #1a1a1a !important; }
-  .body-copy { @apply text-gray-300 leading-[1.6]; font-size:15.5px; }
-  @screen md { .body-copy { font-size:16px; } }
-  .icon-pill { @apply inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[#232323] text-accent text-base; }
-  .info-row { @apply flex items-start gap-3 text-sm; }
-  .info-label { @apply flex items-center justify-center w-8 h-8 rounded-xl bg-[#1d1d1d] text-accent; }
-  .nav-ghost { @apply text-gray-400 hover:text-accent transition-colors; }
-  .custom-scroll::-webkit-scrollbar { inline-size:6px; }
-  .custom-scroll::-webkit-scrollbar-track { background:transparent; }
-  .custom-scroll::-webkit-scrollbar-thumb { background:#1e1e1e; border-radius:6px; }
-  .custom-scroll:hover::-webkit-scrollbar-thumb { background:#252525; }
-  /* Sidebar sizing enhancements */
+
+  /* ── Typography utilities ────────────────────────────────────────────── */
+  .body-copy { @apply text-gray-300 leading-[1.65]; font-size: 15.5px; }
+  @screen md { .body-copy { font-size: 16px; } }
+
+  /* ── Sidebar ──────────────────────────────────────────────────────────── */
   .sidebar-name { @apply text-3xl font-semibold tracking-tight text-white; }
-  .sidebar-role { @apply px-4 py-1.5 rounded-xl bg-[#222222] text-[13px] font-medium text-gray-200; }
-  .social-btn { @apply w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 bg-[#1b1b1b] hover:text-[#ffdb70] hover:bg-[#242424] transition-colors text-lg; }
+  .sidebar-role {
+    @apply px-4 py-1.5 rounded-xl bg-[#222222] text-[13px] font-medium text-gray-200;
+  }
+  .social-btn {
+    @apply w-9 h-9 rounded-lg flex items-center justify-center
+           text-gray-400 bg-[#1b1b1b]
+           hover:text-[#ffdb70] hover:bg-[#242424]
+           transition-colors text-lg;
+  }
   .contact-item { @apply flex gap-4 items-center rounded-2xl bg-[#141414] border border-[#1d1d1d] px-4 py-4; }
   .contact-icon { @apply flex items-center justify-center w-11 h-11 rounded-xl bg-[#1d1d1d] text-[#ffdb70] text-xl; }
   .contact-meta { @apply flex flex-col leading-tight text-sm; }
   .contact-label { @apply text-[11px] uppercase tracking-wide text-gray-500 font-medium; }
-  /* Tabs design */
-  .tabs-bar { @apply flex items-center gap-1; }
+
+  /* ── Tabs ─────────────────────────────────────────────────────────────── */
   .tab-link { @apply relative px-6 py-4 rounded-xl text-[13px] font-medium text-gray-400 transition-colors duration-200 select-none; }
   .tab-link:hover { @apply text-gray-200 bg-[#1b1b1b]; }
   .tab-link-active { @apply text-white bg-[#202020]; }
-  .tab-link-active::after { content:""; position:absolute; inset-inline-start:18px; inset-inline-end:18px; inset-block-end:6px; block-size:3px; background:#ffdb70; border-radius:2px; }
+  .tab-link-active::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 18px;
+    inset-inline-end: 18px;
+    inset-block-end: 6px;
+    block-size: 3px;
+    background: #ffdb70;
+    border-radius: 2px;
+  }
+
+  /* ── Page title ───────────────────────────────────────────────────────── */
+  .accent-underline { position: relative; }
+  .accent-underline:after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-end: -6px;
+    inline-size: 38px;
+    block-size: 3px;
+    background: #ffdb70;
+    border-radius: 3px;
+  }
+
+  /* ── Project card (premium) ───────────────────────────────────────────── */
+  .proj-card {
+    @apply bg-[#161616] border border-[#202020] rounded-2xl p-5
+           flex flex-col gap-4
+           hover:border-[#2a2a2a] hover:bg-[#191919]
+           transition-all duration-200 cursor-default;
+  }
+  .proj-card-featured {
+    @apply bg-[#161616] border border-[#202020] rounded-2xl
+           flex flex-col overflow-hidden
+           hover:border-[#2d2d2d] hover:bg-[#191919]
+           transition-all duration-200;
+  }
+  .proj-number {
+    @apply text-[11px] font-mono text-[#ffdb70]/50 tracking-widest mb-1 select-none;
+  }
+  .proj-status-badge {
+    @apply inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider
+           px-2.5 py-1 rounded-full;
+  }
+  .proj-status-production { @apply bg-emerald-500/10 text-emerald-400; }
+  .proj-status-indev      { @apply bg-amber-500/10 text-amber-400; }
+  .proj-status-personal   { @apply bg-[#ffdb70]/10 text-[#ffdb70]; }
+  .proj-ownership-tag {
+    @apply text-[10px] font-medium px-2 py-0.5 rounded bg-[#1e1e1e] text-gray-500 border border-[#252525];
+  }
+
+  /* ── Case study modal ─────────────────────────────────────────────────── */
+  .cs-overlay {
+    @apply fixed inset-0 z-50 flex items-start justify-center
+           bg-black/75 backdrop-blur-sm overflow-y-auto py-8 px-4;
+  }
+  .cs-panel {
+    @apply relative w-full max-w-3xl bg-[#181818] border border-[#262626]
+           rounded-3xl shadow-2xl p-8 flex flex-col gap-8 my-auto;
+  }
+  .cs-section-label {
+    @apply text-[10px] font-semibold uppercase tracking-widest text-[#ffdb70]/60 mb-2;
+  }
+  .cs-section-value {
+    @apply text-gray-300 text-[15px] leading-relaxed;
+  }
+  .cs-tech-pill {
+    @apply px-3 py-1 rounded-full text-xs font-medium
+           bg-[#1e1e1e] border border-[#2a2a2a] text-gray-400;
+  }
+  .cs-built-item {
+    @apply flex items-start gap-2.5 text-[14px] text-gray-300 leading-relaxed;
+  }
+
+  /* ── Experience timeline ──────────────────────────────────────────────── */
+  .exp-timeline-item {
+    @apply relative pl-8 pb-8 border-l border-[#252525] last:border-transparent last:pb-0;
+  }
+  .exp-timeline-dot {
+    @apply absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-[#ffdb70]/70
+           border-2 border-[#111111];
+  }
+
+  /* ── What I Build service card ────────────────────────────────────────── */
+  .service-card {
+    @apply bg-[#161616] rounded-xl p-5 flex items-start gap-4
+           hover:bg-[#1b1b1b] transition border border-[#1e1e1e];
+  }
+  .service-icon {
+    @apply w-10 h-10 rounded-lg bg-[#1e1e1e] flex items-center justify-center
+           text-[#ffdb70] text-xl flex-shrink-0;
+  }
+
+  /* ── CTA button variants ──────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg
+           bg-[#ffdb70] text-[#111] font-semibold text-sm
+           hover:brightness-95 active:scale-[.97] transition
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdb70]/60;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg
+           border border-[#2a2a2a] text-gray-300 font-medium text-sm
+           hover:border-[#ffdb70] hover:text-[#ffdb70] transition
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdb70]/40;
+  }
+
+  /* ── Scroll hide ──────────────────────────────────────────────────────── */
+  .custom-scroll::-webkit-scrollbar { inline-size: 6px; }
+  .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+  .custom-scroll::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 6px; }
+  .custom-scroll:hover::-webkit-scrollbar-thumb { background: #252525; }
 }
 
-h1,h2,h3,h4 { @apply text-white font-semibold tracking-tight; }
-
-.accent-underline { position: relative; }
-.accent-underline:after { content: ""; position: absolute; inset-inline-start:0; inset-block-end:-6px; inline-size:38px; block-size:3px; background:#ffdb70; border-radius:3px; }
+h1, h2, h3, h4 { @apply text-white font-semibold tracking-tight; }

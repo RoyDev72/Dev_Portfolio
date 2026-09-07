@@ -5,7 +5,7 @@ const items = [
   { label: "About", to: "/" },
   { label: "Skills", to: "/skills" },
   { label: "Projects", to: "/projects" },
-  { label: "Blog", to: "/blog" },
+  { label: "Experience", to: "/experience" },
   { label: "Contact", to: "/contact" }
 ];
 

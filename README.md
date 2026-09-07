@@ -1,6 +1,6 @@
-Shivam Roy — Full Stack Developer Portfolio
-This is my personal portfolio website, built with React and Express.
-It showcases my projects, skills, experience, and provides a contact form for direct communication.
+Shivam Roy — Software Developer & Builder Portfolio
+This is my personal portfolio website, built with React, Tailwind CSS, and Express.
+It showcases my client projects, Shopify storefront work, technical skills, and experience with interactive case studies.
 
 Features:
 
